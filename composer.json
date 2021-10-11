@@ -3,6 +3,11 @@
     "type": "project",
 	"description": "hexlet php-package",
   	"license": "MIT",
-    "require": {},
-	"bin": ["bin/brain-games"]
+    "require": {
+        "wp-cli/php-cli-tools": "^0.11.13"
+    },
+	"bin": ["bin/brain-games"],
+	"autoload": {
+        "files": ["src/Cli.php"]
+    }
 }
