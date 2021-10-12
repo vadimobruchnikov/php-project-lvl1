@@ -15,4 +15,8 @@ $ make install
 ```sh
 $ make test
 ```
+## Run lint
 
+```sh
+$ make lint
+```
