@@ -2,9 +2,18 @@ name: make-lint
 on: push
 jobs:
   my-job:
-    runs-on: ubuntu-latest
+	runs-on: ubuntu-latest
     steps:
-      - name: Install
+		- uses: actions/checkout@v2
+        # Step's name
+      	- name: Setup PHP
+        # Action gives to setup the PHP environment to test application
+        # https://github.com/shivammathur/setup-php
+        uses: vadimobruchnikov/php-project-lvl1@v2
+        with:
+          # Specify the PHP version
+          php-version: '7.3'
+      	- name: Install
         run: make install
-      - name: Linter
+      	- name: Linter
         run: make lint
