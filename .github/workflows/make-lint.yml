@@ -4,8 +4,18 @@ jobs:
   my-job:
     runs-on: ubuntu-latest
     steps:
+        # Check-out repository under GitHub workspace
+        # https://github.com/actions/checkout
       - uses: actions/checkout@v2
+        # Step's name
       - name: Install
-      run: make install
+        # Install project
+        run: |
+          make install
+        # Add environment variables
+        env:
+          CI: true
       - name: Run linter
-      run: make lint
+        # Run Linter
+        run: |
+          make lint
