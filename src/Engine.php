@@ -1,20 +1,36 @@
 <?php
 
-namespace Brain\Games\BrainCalc;
+namespace Brain\Games\Engine;
 
 use function cli\line;
 use function cli\prompt;
 
-define('MAX_ROUNDS',  3);
+/*
+interface iMessenger
+{
+    function send();
+}
+class EmailMessenger implements iMessenger 
+{
+    function send()
+    {
+        echo "Отправка сообщения на e-mail";
+    }
+}
+$outlook = new EmailMessenger();
+$outlook->send();
+*/
+
 line('Welcome to the Brain Game!');
 $username = prompt('May I have your name?');
 line("Hello, %s!", $username);
+
 line('What is the result of the expression?');
-$attemped = 0;
+$attemped = 1;
 $result = true;
 $operations = [ "+", "-", "*"];
 
-while ($attemped < MAX_ROUNDS && $result) {
+while ($attemped < 4 && $result) {
     $number1 = random_int(1, 10);
     $number2 = random_int(1, 10);
     $operation = random_int(0, 2);
