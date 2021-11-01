@@ -12,18 +12,18 @@ use function cli\prompt;
     $attemped = 1;
     $result = true;
 
-    while ($attemped < 4 && $result) {
-        $number = random_int(1, 100);
-        line("Question: $number");
-        $answer = prompt('Your answer: ');
-        $correctAnswer = $number % 2 === 0 ? 'yes' : 'no';
-        $result = $answer == $correctAnswer;
-        if (!$result) {
-            line("'$answer' is wrong answer ;(. Correct answer was '$correctAnswer'.");
-            line("Let's try again, $username!");
-            return;
-        }
-        $attemped++;
+while ($attemped < 4 && $result) {
+    $number = random_int(1, 100);
+    line("Question: $number");
+    $answer = prompt('Your answer: ');
+    $correctAnswer = $number % 2 === 0 ? 'yes' : 'no';
+    $result = $answer == $correctAnswer;
+    if (!$result) {
+        line("'$answer' is wrong answer ;(. Correct answer was '$correctAnswer'.");
+        line("Let's try again, $username!");
+        return;
     }
+    $attemped++;
+}
     line("Correct!");
     line("Congratulations, $username!");
