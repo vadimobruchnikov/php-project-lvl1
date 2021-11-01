@@ -20,3 +20,7 @@ $ make test
 ```sh
 $ make lint
 ```
+
+##Brain-calc
+
+https://asciinema.org/a/RKISdpl92rt59mz6h8sVL8cHl
