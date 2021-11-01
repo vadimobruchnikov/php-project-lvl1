@@ -1,50 +1,87 @@
 <?php
 
-namespace Brain\Games\Engine;
+namespace Brain\Games;
 
 use function cli\line;
 use function cli\prompt;
 
-/*
-interface iMessenger
+abstract class Engine
 {
-    function send();
-}
-class EmailMessenger implements iMessenger 
-{
-    function send()
+    public $userName;
+    public $answer;
+    public $correctAnswer;
+    public $expression;
+    public $gameResult;
+    public $maxRounds;
+
+    abstract public function askQuestion();
+    abstract public function gameImplementation();
+
+    public function __construct()
     {
-        echo "Отправка сообщения на e-mail";
+        $this->attemped = -1;
+        $this->gameResult = true;
+        $this->maxRounds = 3;
+    }
+
+    public function greeting()
+    {
+        line('Welcome to the Brain Game!');
+    }
+
+    public function getAnswer()
+    {
+        $this->answer = prompt('Your answer: ');
+    }
+
+    public function getUserName()
+    {
+        $this->userName = prompt('May I have your name?');
+        line("Hello, %s!", $this->userName);
+    }
+
+    public function wrongAnswer()
+    {
+        line("'$this->answer' is wrong answer ;(. Correct answer was '$this->correctAnswer'.");
+        line("Let's try again, $this->userName!");
+    }
+
+    public function congratulations()
+    {
+        line("Correct!");
+        line("Congratulations, $this->userName!");
+    }
+
+    public function setResult()
+    {
+        $this->gameResult = $this->answer == $this->correctAnswer;
+    }
+
+    public function isRightAnswer()
+    {
+        return $this->gameResult;
+    }
+
+    public function nextStep()
+    {
+        $this->attemped++;
+        return $this->attemped < $this->maxRounds && $this->gameResult;
+    }
+
+    public function playGame()
+    {
+        $this->greeting();
+        $this->getUserName();
+        while ($this->nextStep()) {
+            $this->gameImplementation();
+            $this->askQuestion();
+            $this->getAnswer();
+            $this->setResult();
+            if (!$this->isRightAnswer()) {
+                $this->wrongAnswer();
+                return;
+            }
+        }
+        $this->congratulations();
     }
 }
-$outlook = new EmailMessenger();
-$outlook->send();
-*/
-
-line('Welcome to the Brain Game!');
-$username = prompt('May I have your name?');
-line("Hello, %s!", $username);
-
-line('What is the result of the expression?');
-$attemped = 1;
-$result = true;
-$operations = [ "+", "-", "*"];
-
-while ($attemped < 4 && $result) {
-    $number1 = random_int(1, 10);
-    $number2 = random_int(1, 10);
-    $operation = random_int(0, 2);
-    $expression = (string)$number1 . $operations[$operation] . $number2;
-    line("Question: $expression");
-    $answer = prompt('Your answer: ');
-    eval('$correctAnswer = ' . $expression . ';');
-    $result = $answer == $correctAnswer;
-    if (!$result) {
-        line("'$answer' is wrong answer ;(. Correct answer was '$correctAnswer'.");
-        line("Let's try again, $username!");
-        return;
-    }
-    $attemped++;
-}
-line("Correct!");
-line("Congratulations, $username!");
