@@ -26,7 +26,7 @@ abstract class Engine
 
     public function greeting()
     {
-        line('Welcome to the Brain Game!');
+        line('Welcome to the Brain Games!');
     }
 
     public function getAnswer()

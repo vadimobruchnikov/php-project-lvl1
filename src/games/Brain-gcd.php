@@ -20,7 +20,7 @@ class BrainGcd extends Engine
 
     public function gameImplementation()
     {
-        // Простой калькулятор 2 числа 3 действия
+        // Нахождение наибольшего общего делителя
         $number1 = random_int(2, 25);
         $number2 = $number1 * random_int(1, 5);
         $this->expression = $number1 . ' ' . $number2;
