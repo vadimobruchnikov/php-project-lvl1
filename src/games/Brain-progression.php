@@ -5,12 +5,12 @@ namespace Brain\Games\BrainProgression;
 use function cli\line;
 use function cli\prompt;
 
-function askQuestion()
+function askQuestion(): void
 {
     line('What number is missing in the progression?');
 }
 
-function gameImplementation()
+function gameImplementation(): int
 {
     // Угадывание числа из прогрессии
     $first = random_int(1, 50);

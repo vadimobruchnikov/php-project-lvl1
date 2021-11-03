@@ -19,12 +19,12 @@ function isPrime($number)
     return true;
 }
 
-function askQuestion()
+function askQuestion(): void
 {
     line('Answer "yes" if given number is prime. Otherwise answer "no".');
 }
 
-function gameImplementation()
+function gameImplementation(): string
 {
     // Угадывание простое ли число
     $number = random_int(1, 100);

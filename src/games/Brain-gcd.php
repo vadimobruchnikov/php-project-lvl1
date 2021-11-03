@@ -5,12 +5,12 @@ namespace Brain\Games\BrainGcd;
 use function cli\line;
 use function cli\prompt;
 
-function askQuestion()
+function askQuestion(): void
 {
     line('Find the greatest common divisor of given numbers.');
 }
 
-function gameImplementation()
+function gameImplementation(): int
 {
     // Нахождение наибольшего общего делителя
     $number1 = random_int(2, 25);

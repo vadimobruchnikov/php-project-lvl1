@@ -5,12 +5,12 @@ namespace Brain\Games\BrainEven;
 use function cli\line;
 use function cli\prompt;
 
-function askQuestion()
+function askQuestion(): void
 {
     line('Answer "yes" if the number is even, otherwise answer "no".');
 }
 
-function gameImplementation()
+function gameImplementation(): string
 {
     $number = random_int(1, 100);
     line("Question: $number");

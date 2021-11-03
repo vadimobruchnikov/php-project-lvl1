@@ -5,12 +5,12 @@ namespace Brain\Games\BrainCalc;
 use function cli\line;
 use function cli\prompt;
 
-function askQuestion()
+function askQuestion(): void
 {
     line('What is the result of the expression?');
 }
 
-function gameImplementation()
+function gameImplementation(): int
 {
     // Простой калькулятор 2 числа 3 действия
     $number1 = random_int(2, 20);
