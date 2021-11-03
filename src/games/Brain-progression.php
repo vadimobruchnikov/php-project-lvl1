@@ -13,16 +13,17 @@ function askQuestion()
 function gameImplementation()
 {
     // Угадывание числа из прогрессии
-    $startNumber = random_int(1, 50);
-    $stepProgression = random_int(1, 6);
+    $first = random_int(1, 50);
+    $difference = random_int(1, 6);
     $countProgression = random_int(6, 10);
     $progression = '';
-    $correctAnswer = $startNumber + $stepProgression * random_int(1, $countProgression);
-    for ($i = 1; $i < $countProgression; $i++) {
-        if ($correctAnswer == $startNumber + $stepProgression * $i) {
+    $correctAnswer = $first  + $difference * random_int(0, $countProgression);
+    for ($i = 0; $i <= $countProgression; $i++) {
+        $hiddenMemberIndex = $first  + $difference * $i;
+        if ($correctAnswer == $hiddenMemberIndex) {
             $progression = $progression . '.. ';
         } else {
-            $progression = $progression . ($startNumber + $stepProgression * $i) . ' ';
+            $progression = $progression . ($first + $difference * $i) . ' ';
         }
     }
     line("Question: " . (string)$progression);
