@@ -19,7 +19,7 @@ function playGame(string $greetingMessage, callable $askQuestion, callable $game
         $askQuestion();
         $correctAnswer = $gameImplementation();
         $answer = prompt('Your answer: ');
-        if ($answer !== $correctAnswer) {
+        if ($answer != $correctAnswer) {
             line("$answer is wrong answer ;(. Correct answer was $correctAnswer.");
             line("Let's try again, $userName!");
             return;

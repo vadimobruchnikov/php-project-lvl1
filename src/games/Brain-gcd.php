@@ -10,7 +10,7 @@ function askQuestion(): void
     line('Find the greatest common divisor of given numbers.');
 }
 
-function gameImplementation(): int
+function gameImplementation(): string
 {
     // Нахождение наибольшего общего делителя
     $number1 = random_int(2, 25);
