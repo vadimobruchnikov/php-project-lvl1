@@ -8,7 +8,6 @@ use function cli\prompt;
 function playGame(string $greetingMessage, callable $askQuestion, callable $gameImplementation): void
 {
     $attemped = 1;
-    $gameResult = true;
     $maxRounds = 3;
 
     line($greetingMessage);
@@ -16,7 +15,7 @@ function playGame(string $greetingMessage, callable $askQuestion, callable $game
     $userName = prompt('May I have your name?');
     line("Hello, %s!", $userName);
 
-    while (($attemped <= $maxRounds) && ($gameResult === true)) {
+    while ($attemped <= $maxRounds) {
         $askQuestion();
         $correctAnswer = $gameImplementation();
         $answer = prompt('Your answer: ');
