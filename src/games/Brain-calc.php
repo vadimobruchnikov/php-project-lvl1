@@ -10,7 +10,7 @@ function askQuestion(): void
     line('What is the result of the expression?');
 }
 
-function gameImplementation(): int
+function gameImplementation(): string
 {
     // Простой калькулятор 2 числа 3 действия
     $number1 = random_int(2, 20);
