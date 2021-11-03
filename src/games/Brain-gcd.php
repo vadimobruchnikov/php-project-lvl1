@@ -1,35 +1,22 @@
 <?php
 
-namespace Brain\Games;
+namespace Brain\Games\BrainGcd;
 
 use function cli\line;
 use function cli\prompt;
 
-class BrainGcd extends Engine
+function askQuestion()
 {
-    public function __construct()
-    {
-        parent::__construct();
-        $this->maxRounds = 3;
-    }
+    line('Find the greatest common divisor of given numbers.');
+}
 
-    public function greeting()
-    {
-        line('Welcome to the Brain Games!');
-    }
-
-    public function gameImplementation()
-    {
-        // Нахождение наибольшего общего делителя
-        $number1 = random_int(2, 25);
-        $number2 = $number1 * random_int(1, 5);
-        $this->expression = $number1 . ' ' . $number2;
-        $this->correctAnswer = $number1;
-    }
-
-    public function askQuestion()
-    {
-        line('Find the greatest common divisor of given numbers.');
-        line("Question: " . $this->expression);
-    }
+function gameImplementation()
+{
+    // Нахождение наибольшего общего делителя
+    $number1 = random_int(2, 25);
+    $number2 = $number1 * random_int(2, 5);
+    $expression = $number1 . ' ' . $number2;
+    line("Question: " . $expression);
+    $correctAnswer = $number1;
+    return $correctAnswer;
 }

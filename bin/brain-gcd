@@ -1,6 +1,8 @@
 #!/usr/bin/env php
 <?php
 
+use Brain\Games\Engine;
+
 $autoloadPath1 = __DIR__ . '/../../../autoload.php';
 $autoloadPath2 = __DIR__ . '/../vendor/autoload.php';
 if (file_exists($autoloadPath1)) {
@@ -9,5 +11,12 @@ if (file_exists($autoloadPath1)) {
    	require_once $autoloadPath2;
 }
 
-$game = new Brain\Games\BrainGcd();
-$game->playGame();
+$askQuestion = function () {
+	return Brain\Games\BrainGcd\askQuestion();
+};
+
+$gameImplementation = function () {
+	return Brain\Games\BrainGcd\gameImplementation();
+};
+
+Brain\Games\Engine\playGame("Welcome to the Brain Games!", $askQuestion, $gameImplementation);

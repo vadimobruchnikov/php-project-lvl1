@@ -1,87 +1,33 @@
 <?php
 
-namespace Brain\Games;
+namespace Brain\Games\Engine;
 
 use function cli\line;
 use function cli\prompt;
 
-abstract class Engine
+function playGame($greetingMessage, $askQuestion, $gameImplementation)
 {
-    public $userName;
-    public $answer;
-    public $correctAnswer;
-    public $expression;
-    public $gameResult;
-    public $maxRounds;
+    $attemped = 1;
+    $gameResult = true;
+    $maxRounds = 3;
 
-    abstract public function askQuestion();
-    abstract public function gameImplementation();
+    line($greetingMessage);
 
-    public function __construct()
-    {
-        $this->attemped = -1;
-        $this->gameResult = true;
-        $this->maxRounds = 3;
-    }
+    $userName = prompt('May I have your name?');
+    line("Hello, %s!", $userName);
 
-    public function greeting()
-    {
-        line('Welcome to the Brain Games!');
-    }
-
-    public function getAnswer()
-    {
-        $this->answer = prompt('Your answer: ');
-    }
-
-    public function getUserName()
-    {
-        $this->userName = prompt('May I have your name?');
-        line("Hello, %s!", $this->userName);
-    }
-
-    public function wrongAnswer()
-    {
-        line("'$this->answer' is wrong answer ;(. Correct answer was '$this->correctAnswer'.");
-        line("Let's try again, $this->userName!");
-    }
-
-    public function congratulations()
-    {
-        line("Correct!");
-        line("Congratulations, $this->userName!");
-    }
-
-    public function setResult()
-    {
-        $this->gameResult = $this->answer == $this->correctAnswer;
-    }
-
-    public function isRightAnswer()
-    {
-        return $this->gameResult;
-    }
-
-    public function nextStep()
-    {
-        $this->attemped++;
-        return $this->attemped < $this->maxRounds && $this->gameResult;
-    }
-
-    public function playGame()
-    {
-        $this->greeting();
-        $this->getUserName();
-        while ($this->nextStep()) {
-            $this->gameImplementation();
-            $this->askQuestion();
-            $this->getAnswer();
-            $this->setResult();
-            if (!$this->isRightAnswer()) {
-                $this->wrongAnswer();
-                return;
-            }
+    while ($attemped <= $maxRounds && $gameResult) {
+        $askQuestion();
+        $correctAnswer = $gameImplementation();
+        $answer = prompt('Your answer: ');
+        $gameResult = $answer == $correctAnswer;
+        if (!$gameResult) {
+            line("$answer is wrong answer ;(. Correct answer was $correctAnswer.");
+            line("Let's try again, $userName!");
+            return;
         }
-        $this->congratulations();
+        $attemped++;
     }
+    line("Correct!");
+    line("Congratulations, $userName!");
 }
