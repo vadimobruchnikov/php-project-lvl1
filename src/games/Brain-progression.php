@@ -10,7 +10,7 @@ function askQuestion(): void
     line('What number is missing in the progression?');
 }
 
-function gameImplementation(): int
+function gameImplementation(): string
 {
     // Угадывание числа из прогрессии
     $first = random_int(1, 50);
@@ -26,6 +26,6 @@ function gameImplementation(): int
             $progression = $progression . ($first + $difference * $i) . ' ';
         }
     }
-    line("Question: " . (string)$progression);
-    return $correctAnswer;
+    line("Question: " . $progression);
+    return (string)$correctAnswer;
 }

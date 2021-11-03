@@ -5,7 +5,7 @@ namespace Brain\Games\Engine;
 use function cli\line;
 use function cli\prompt;
 
-function playGame($greetingMessage, $askQuestion, $gameImplementation): void
+function playGame(string $greetingMessage, callable $askQuestion, callable $gameImplementation): void
 {
     $attemped = 1;
     $gameResult = true;

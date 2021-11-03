@@ -19,6 +19,7 @@ function gameImplementation(): int
     $operation = random_int(0, 2);
     $expression = $number1 . ' ' . $operations[$operation] . ' ' . $number2;
     line("Question: " . $expression);
+    $correctAnswer = '';
     eval(' $correctAnswer = ' . $expression . ";");
     return $correctAnswer;
 }
