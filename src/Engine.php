@@ -16,7 +16,7 @@ function playGame(string $greetingMessage, callable $askQuestion, callable $game
     $userName = prompt('May I have your name?');
     line("Hello, %s!", $userName);
 
-    while ($attemped <= $maxRounds && $gameResult) {
+    while (($attemped <= $maxRounds) && ($gameResult === true)) {
         $askQuestion();
         $correctAnswer = $gameImplementation();
         $answer = prompt('Your answer: ');
