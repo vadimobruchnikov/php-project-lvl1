@@ -17,6 +17,6 @@ function gameImplementation(): string
     $number2 = $number1 * random_int(2, 5);
     $expression = $number1 . ' ' . $number2;
     line("Question: " . $expression);
-    $correctAnswer = $number1;
+    $correctAnswer = (string)$number1;
     return $correctAnswer;
 }
